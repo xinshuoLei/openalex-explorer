@@ -6,58 +6,80 @@ import {
   Toolbar,
   Typography,
   Divider,
+  TextField,
 } from '@mui/material'
-import { Sidebar } from '../components/Sidebar';
+import IconButton from "@mui/material/IconButton";
+import SearchIcon from "@mui/icons-material/Search";
 
 
 const drawerWidth = "16vw";
 
+const SearchBar = ({setSearchQuery}) => (
+  <form>
+    <TextField
+      id="search-bar"
+      className="text"
+      onInput={(e) => {
+        setSearchQuery(e.target.value);
+      }}
+      variant="outlined"
+      placeholder="Search..."
+      size="small"
+      style = {{width: "20vw"}}
+    />
+    <IconButton type="submit" aria-label="search">
+      <SearchIcon style={{ fill: "black" }} />
+    </IconButton>
+  </form>
+);
+
 export const ConceptPage = () => {
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex'}} >
       <CssBaseline />
       <AppBar
         position="fixed"
-        sx={{ width: "84vw", ml: "16vw" }}
+        sx={{ width: "84vw", ml: "16vw", bgcolor: "background.default"}}
       >
         <Toolbar>
-          <Typography variant="h6" noWrap component="div">
+          <Typography variant="h6" noWrap component="div" color="black" fontFamily="monospace">
             Concept
           </Typography>
         </Toolbar>
       </AppBar>
       <Box
-        component="main"
-        sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
+        display="flex"
+        flexDirection="column"
+        justifyContent="center"
+        alignItems="center"
+        minHeight="100vh"
+        minWidth="84vw"
       >
-        <Toolbar />
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
-          enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus
-          imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus.
-          Convallis convallis tellus id interdum velit laoreet id donec ultrices.
-          Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-          adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra
-          nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum
-          leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis
-          feugiat vivamus at augue. At augue eget arcu dictum varius duis at
-          consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-          sapien faucibus et molestie ac.
+        <Typography variant="h4" component="div" sx={{mt:2, mb:4}} fontFamily="monospace"> 
+          Start exploring concepts 
         </Typography>
-        <Typography paragraph>
-          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper
-          eget nulla facilisi etiam dignissim diam. Pulvinar elementum integer enim
-          neque volutpat ac tincidunt. Ornare suspendisse sed nisi lacus sed viverra
-          tellus. Purus sit amet volutpat consequat mauris. Elementum eu facilisis
-          sed odio morbi. Euismod lacinia at quis risus sed vulputate odio. Morbi
-          tincidunt ornare massa eget egestas purus viverra accumsan in. In hendrerit
-          gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem
-          et tortor. Habitant morbi tristique senectus et. Adipiscing elit duis
-          tristique sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
-          eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
-          posuere sollicitudin aliquam ultrices sagittis orci a.
-        </Typography>
+        <SearchBar/>
+        <Box display="flex" flexDirection="row">
+          <Box sx={{boxShadow: 4,
+                    mt: 10, 
+                    borderRadius: "5%", 
+                    minHeight: "50vh", 
+                    minWidth: "20vw", 
+                    justifyContent: "center",
+                    display: "flex",
+                    mr: 20}}>
+            <Typography marginTop={2} fontFamily="monospace">New concepts</Typography>
+          </Box>
+          <Box sx={{boxShadow: 4,
+                    mt: 10, 
+                    borderRadius: "5%", 
+                    minHeight: "50vh", 
+                    minWidth: "20vw", 
+                    justifyContent: "center",
+                    display: "flex"}}>
+            <Typography marginTop={2} fontFamily="monospace">Popular concepts</Typography>
+          </Box>
+        </Box>
         
       </Box>
     </Box>

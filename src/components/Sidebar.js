@@ -49,12 +49,14 @@ export const Sidebar = () => {
                 <Typography variant="h7" component="div" sx={{ mr:3, ml:4}} fontFamily="monospace">Work</Typography>
               </ListItemButton>
             </ListItem>
+            <Divider />
             <ListItem key="Concept" disablePadding>
               <ListItemButton onClick={toConceptPage}>
                 <Image src={lightbulb} fit="contain" height="15%" width="15%" sx={{ mr:3, ml:3}} duration={0}/>
                 <Typography variant="h7" component="div" sx={{ mr:3, ml:4}} fontFamily="monospace">Concept</Typography>
               </ListItemButton>
             </ListItem>
+            <Divider />
         </List>
       </Drawer>
     );
