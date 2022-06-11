@@ -17,6 +17,9 @@ import Image from 'mui-image'
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import logo from './images/OpenAlex-logo.png';
+import lightbulb from './images/lightbulb.png'
+import paper from './images/paper.png'
+
 
 const drawerWidth = 240;
 
@@ -45,20 +48,25 @@ function App() {
         }}
         variant="permanent"
         anchor="left"
-      >
+      > 
+        <Typography variant="h5" component="div" sx={{mt:2, ml:4}} fontFamily="monospace">
+            Exploring
+        </Typography>
         <Image src={logo} height="10%" fit="contain"/>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem key={text} disablePadding>
+            <ListItem key="Work" disablePadding>
               <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
+                <Image src={paper} fit="contain" height="15%" width="15%" sx={{ mr:3, ml:3}}/>
+                <Typography variant="h7" component="div" sx={{ mr:3, ml:4}} fontFamily="monospace">Work</Typography>
               </ListItemButton>
             </ListItem>
-          ))}
+            <ListItem key="Work" disablePadding>
+              <ListItemButton>
+                <Image src={lightbulb} fit="contain" height="15%" width="15%" sx={{ mr:3, ml:3}}/>
+                <Typography variant="h7" component="div" sx={{ mr:3, ml:4}} fontFamily="monospace">Concept</Typography>
+              </ListItemButton>
+            </ListItem>
         </List>
       </Drawer>
       <Box
