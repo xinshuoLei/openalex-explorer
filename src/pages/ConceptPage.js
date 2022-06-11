@@ -10,7 +10,7 @@ import {
 import { Sidebar } from '../components/Sidebar';
 
 
-const drawerWidth = 240;
+const drawerWidth = "16vw";
 
 export const ConceptPage = () => {
   return (
@@ -18,7 +18,7 @@ export const ConceptPage = () => {
       <CssBaseline />
       <AppBar
         position="fixed"
-        sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
+        sx={{ width: "84vw", ml: "16vw" }}
       >
         <Toolbar>
           <Typography variant="h6" noWrap component="div">

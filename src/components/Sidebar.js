@@ -13,7 +13,7 @@ import lightbulb from '../images/lightbulb.png'
 import paper from '../images/paper.png'
 import { useNavigate } from 'react-router-dom';
 
-const drawerWidth = 240;
+const drawerWidth = "16vw";
 
 export const Sidebar = () => {
     const navigate = useNavigate(); 
