@@ -10,30 +10,65 @@ import {
 } from '@mui/material'
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
+import { useState, useEffect } from 'react';
+import { useForm } from 'react-hook-form'
 
 
-const drawerWidth = "16vw";
 
-const SearchBar = ({setSearchQuery}) => (
-  <form>
-    <TextField
-      id="search-bar"
-      className="text"
-      onInput={(e) => {
-        setSearchQuery(e.target.value);
-      }}
-      variant="outlined"
-      placeholder="Search..."
-      size="small"
-      style = {{width: "20vw"}}
-    />
-    <IconButton type="submit" aria-label="search">
-      <SearchIcon style={{ fill: "black" }} />
-    </IconButton>
-  </form>
-);
 
 export const ConceptPage = () => {
+
+  const drawerWidth = "16vw";
+  const { register, handleSubmit } = useForm()
+
+  const SearchBar = () => (
+    <form onSubmit={handleSubmit(performSearch)}>
+      <TextField
+        id="search-bar"
+        className="text"
+        variant="outlined"
+        placeholder="Search..."
+        size="small"
+        style = {{width: "20vw"}}
+        {...register("key")}
+      />
+      <IconButton type="submit" aria-label="search">
+        <SearchIcon style={{ fill: "black" }} />
+      </IconButton>
+    </form>
+  );
+
+  const performSearch = (data) => {
+    console.log(data.key)
+  }
+
+  const [newConcepts, setNewConcepts] = useState(false);
+  const [popularConcepts, setPopularConcepts] = useState(false)
+  useEffect(() => {
+    getNewConcepts();
+    getPopularConcepts();
+  }, []);
+  
+  function getNewConcepts() {
+    fetch('http://localhost:3001/new_concepts')
+      .then(response => {
+        return response.text();
+      })
+      .then(data => {
+        setNewConcepts(data);
+      });
+  }
+
+  function getPopularConcepts() {
+    fetch('http://localhost:3001/popular_concepts')
+      .then(response => {
+        return response.text();
+      })
+      .then(data => {
+        setPopularConcepts(data);
+      });
+  }
+
   return (
     <Box sx={{ display: 'flex'}} >
       <CssBaseline />
@@ -64,20 +99,50 @@ export const ConceptPage = () => {
                     mt: 10, 
                     borderRadius: "5%", 
                     minHeight: "50vh", 
-                    minWidth: "20vw", 
-                    justifyContent: "center",
+                    width: "20vw", 
                     display: "flex",
+                    flexDirection: "column",
                     mr: 20}}>
-            <Typography marginTop={2} fontFamily="monospace">New concepts</Typography>
+            <Typography marginTop={2} mx="auto" marginBottom={3} fontFamily="monospace">New concepts</Typography>
+            {newConcepts? 
+            JSON.parse("[" + newConcepts + "]")[0].map(x => <Typography
+                                                             fontFamily="monospace"
+                                                             fontSize={14}
+                                                             ml = "2vw"
+                                                             marginBottom={1}
+                                                            >	• {x.display_name}
+                                                            </Typography>)
+            : <Typography
+                fontFamily="monospace"
+                fontSize={14}
+                mx="auto"
+                marginBottom={1}>
+                Loading
+              </Typography>}
           </Box>
           <Box sx={{boxShadow: 4,
                     mt: 10, 
                     borderRadius: "5%", 
                     minHeight: "50vh", 
-                    minWidth: "20vw", 
-                    justifyContent: "center",
-                    display: "flex"}}>
-            <Typography marginTop={2} fontFamily="monospace">Popular concepts</Typography>
+                    width: "20vw", 
+                    display: "flex",
+                    flexDirection: "column"}}>
+            <Typography marginTop={2} mx="auto" marginBottom={3} fontFamily="monospace">Popular concepts</Typography>
+            {newConcepts? 
+            JSON.parse("[" + popularConcepts + "]")[0].map(x => <Typography
+                                                             fontFamily="monospace"
+                                                             fontSize={14}
+                                                             ml = "2vw"
+                                                             marginBottom={1}
+                                                            >	• {x.display_name}
+                                                            </Typography>)
+            : <Typography
+                fontFamily="monospace"
+                fontSize={14}
+                mx="auto"
+                marginBottom={1}>
+                Loading
+              </Typography>}
           </Box>
         </Box>
         

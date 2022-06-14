@@ -10,6 +10,9 @@ import {
 } from '@mui/material'
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
+import {useState, useEffect} from 'react';
+
+
 
 
 const SearchBar = ({setSearchQuery}) => (
@@ -34,6 +37,9 @@ const SearchBar = ({setSearchQuery}) => (
 const drawerWidth = "16vw";
 
 export const WorkPage = () => {
+
+  
+
   return (
     <Box sx={{ display: 'flex'}} >
       <CssBaseline />
@@ -75,8 +81,10 @@ export const WorkPage = () => {
                     borderRadius: "5%", 
                     minHeight: "50vh", 
                     minWidth: "20vw", 
-                    justifyContent: "center",
-                    display: "flex"}}>
+                    maxWidth: "20vw", 
+                    alignItems: "center",
+                    display: "flex",
+                    flexDirection: "column"}}>
             <Typography marginTop={2} fontFamily="monospace">Popular works</Typography>
           </Box>
         </Box>
