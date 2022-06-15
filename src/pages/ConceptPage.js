@@ -6,6 +6,7 @@ import {
   Toolbar,
   Typography,
   Divider,
+  Link,
   TextField,
 } from '@mui/material'
 import IconButton from "@mui/material/IconButton";
@@ -111,13 +112,15 @@ export const ConceptPage = () => {
                     mr: 20}}>
             <Typography marginTop={2} mx="auto" marginBottom={3} fontFamily="monospace">New concepts</Typography>
             {newConcepts? 
-            JSON.parse("[" + newConcepts + "]")[0].map(x => <Typography
+            JSON.parse("[" + newConcepts + "]")[0].map(x => <Link
                                                              fontFamily="monospace"
                                                              fontSize={14}
                                                              ml = "2vw"
                                                              marginBottom={1}
+                                                             underline="hover"
+                                                             onClick={() => navigate(`/concept_info/${x.id.replace("https://openalex.org/", "")}`)}
                                                             >	• {x.display_name}
-                                                            </Typography>)
+                                                            </Link>)
             : <Typography
                 fontFamily="monospace"
                 fontSize={14}
@@ -135,13 +138,15 @@ export const ConceptPage = () => {
                     flexDirection: "column"}}>
             <Typography marginTop={2} mx="auto" marginBottom={3} fontFamily="monospace">Popular concepts</Typography>
             {popularConcepts? 
-            JSON.parse("[" + popularConcepts + "]")[0].map(x => <Typography
-                                                             fontFamily="monospace"
-                                                             fontSize={14}
-                                                             ml = "2vw"
-                                                             marginBottom={1}
-                                                            >	• {x.display_name}
-                                                            </Typography>)
+            JSON.parse("[" + popularConcepts + "]")[0].map(x => <Link
+                                                                  fontFamily="monospace"
+                                                                  fontSize={14}
+                                                                  ml = "2vw"
+                                                                  marginBottom={1}
+                                                                  underline="hover"
+                                                                  onClick={() => navigate(`/concept_info/${x.id.replace("https://openalex.org/", "")}`)}
+                                                                >	• {x.display_name}
+                                                                </Link>)
             : <Typography
                 fontFamily="monospace"
                 fontSize={14}
