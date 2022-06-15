@@ -12,13 +12,23 @@ import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form'
-
-
+import {Link, useNavigate} from 'react-router-dom';
 
 
 export const ConceptPage = () => {
 
-  const drawerWidth = "16vw";
+  const navigate = useNavigate();
+  const [newConcepts, setNewConcepts] = useState(false);
+  const [popularConcepts, setPopularConcepts] = useState(false)
+  const [searchResult, setSearchResult] = useState(false)
+
+
+
+  useEffect(() => {
+    getNewConcepts();
+    getPopularConcepts();
+  }, []);
+
   const { register, handleSubmit } = useForm()
 
   const SearchBar = () => (
@@ -40,16 +50,22 @@ export const ConceptPage = () => {
 
   const performSearch = (data) => {
     console.log(data.key)
+    const searchKey = data.key;
+    navigate("/concept_result", {state:{key:searchKey}})
+    /**
+    fetch( `http://localhost:3001/concepts_result/${encodeURIComponent(searchKey)}`)
+      .then(response => {
+        return response.text();
+      })
+      .then(data => {
+        setSearchResult(data);
+      });
+    */
   }
 
-  const [newConcepts, setNewConcepts] = useState(false);
-  const [popularConcepts, setPopularConcepts] = useState(false)
-  useEffect(() => {
-    getNewConcepts();
-    getPopularConcepts();
-  }, []);
   
-  function getNewConcepts() {
+  
+  const getNewConcepts = () => {
     fetch('http://localhost:3001/new_concepts')
       .then(response => {
         return response.text();
@@ -59,7 +75,7 @@ export const ConceptPage = () => {
       });
   }
 
-  function getPopularConcepts() {
+  const getPopularConcepts = () => {
     fetch('http://localhost:3001/popular_concepts')
       .then(response => {
         return response.text();
@@ -128,7 +144,7 @@ export const ConceptPage = () => {
                     display: "flex",
                     flexDirection: "column"}}>
             <Typography marginTop={2} mx="auto" marginBottom={3} fontFamily="monospace">Popular concepts</Typography>
-            {newConcepts? 
+            {popularConcepts? 
             JSON.parse("[" + popularConcepts + "]")[0].map(x => <Typography
                                                              fontFamily="monospace"
                                                              fontSize={14}

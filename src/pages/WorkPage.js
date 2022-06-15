@@ -38,8 +38,6 @@ const drawerWidth = "16vw";
 
 export const WorkPage = () => {
 
-  
-
   return (
     <Box sx={{ display: 'flex'}} >
       <CssBaseline />
