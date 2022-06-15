@@ -16,6 +16,7 @@ import {
   Route
 } from "react-router-dom";
 import { ConceptResultPage } from './pages/ConceptResultPage';
+import { ConceptInfoPage } from './pages/ConceptInfoPage';
 
 
 const drawerWidth = 240;
@@ -30,6 +31,7 @@ function App() {
               <Route path="/work" element={<WorkPage />} />
               <Route path="/concept" element={<ConceptPage />} />
               <Route path="/concept_result" element={<ConceptResultPage />}/>
+              <Route path="/concept_info/:id" element={<ConceptInfoPage />}/>
               <Route path="/" element={<WorkPage />} />
         </Routes>
       </Box>

@@ -12,7 +12,7 @@ import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form'
-import {Link, useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 export const ConceptPage = () => {
@@ -20,7 +20,6 @@ export const ConceptPage = () => {
   const navigate = useNavigate();
   const [newConcepts, setNewConcepts] = useState(false);
   const [popularConcepts, setPopularConcepts] = useState(false)
-  const [searchResult, setSearchResult] = useState(false)
 
 
 
@@ -52,15 +51,6 @@ export const ConceptPage = () => {
     console.log(data.key)
     const searchKey = data.key;
     navigate("/concept_result", {state:{key:searchKey}})
-    /**
-    fetch( `http://localhost:3001/concepts_result/${encodeURIComponent(searchKey)}`)
-      .then(response => {
-        return response.text();
-      })
-      .then(data => {
-        setSearchResult(data);
-      });
-    */
   }
 
   

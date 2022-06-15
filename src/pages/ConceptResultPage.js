@@ -60,7 +60,10 @@ export const ConceptResultPage = () => {
           >   
                 <Typography variant="h5" fontFamily="monospace">Most relevant results for "{key}"</Typography>
                 {searchResult? 
-                JSON.parse("[" + searchResult + "]")[0].map(x => <ConceptCard name={x.display_name} description={x.description? x.description : "no description available for this concept"}/>)
+                JSON.parse("[" + searchResult + "]")[0].map(x => <ConceptCard 
+                                                                  name={x.display_name} 
+                                                                  id={x.id}
+                                                                  description={x.description? x.description : "no description available for this concept"}/>)
                 : <Typography
                     fontFamily="monospace"
                     fontSize={14}

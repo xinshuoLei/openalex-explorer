@@ -5,11 +5,14 @@ import {
   AppBar,
   Toolbar,
   Typography,
+  Link,
   Divider,
   TextField,
 } from '@mui/material'
+import { useNavigate } from 'react-router-dom';
 
-export const ConceptCard = ({name, description}) => {
+export const ConceptCard = ({id, name, description}) => {
+    const navigate = useNavigate()
     return (
         <Box 
             display="flex"
@@ -19,7 +22,7 @@ export const ConceptCard = ({name, description}) => {
             py={2}
             marginTop={5}
             width="50vw">
-            <Typography variant="h6" fontFamily="monospace">{name}</Typography>
+            <Link variant="h6" fontFamily="monospace" onClick={() => navigate(`/concept_info/${id.replace("https://openalex.org/", "")}`)}>{name}</Link>
             <Typography fontFamily="monospace" color="gray" marginTop={1}>{description}</Typography>
         </Box>
     )
