@@ -18,6 +18,7 @@ import {
 import { ConceptResultPage } from './pages/ConceptResultPage';
 import { ConceptInfoPage } from './pages/ConceptInfoPage';
 import { UploadPage } from './pages/UploadPage';
+import { QueryPage } from './pages/QueryPage';
 
 
 const drawerWidth = 240;
@@ -34,6 +35,7 @@ function App() {
               <Route path="/concept_result" element={<ConceptResultPage />}/>
               <Route path="/concept_info/:id" element={<ConceptInfoPage />}/>
               <Route path="/admin" element={<UploadPage />}/>
+              <Route path="/query" element={<QueryPage />}/>
               <Route path="/" element={<WorkPage />} />
         </Routes>
       </Box>

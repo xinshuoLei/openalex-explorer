@@ -26,7 +26,10 @@ export const Sidebar = () => {
     }
     const toAdminPage = () => {
       navigate("/admin")
-  }
+    }
+    const toQueryPage = () => {
+      navigate("/query")
+    }
 
     return (
         <Drawer
@@ -65,6 +68,13 @@ export const Sidebar = () => {
               <ListItemButton onClick={toAdminPage}>
                 <Image src={coding} fit="contain" height="15%" width="15%" sx={{ mr:3, ml:3}} duration={0}/>
                 <Typography variant="h7" component="div" sx={{ mr:3, ml:4}} fontFamily="monospace">Run Script</Typography>
+              </ListItemButton>
+            </ListItem>
+            <Divider />
+            <ListItem key="Query" disablePadding>
+              <ListItemButton onClick={toQueryPage}>
+                <Image src={coding} fit="contain" height="15%" width="15%" sx={{ mr:3, ml:3}} duration={0}/>
+                <Typography variant="h7" component="div" sx={{ mr:3, ml:4}} fontFamily="monospace">Query Tool</Typography>
               </ListItemButton>
             </ListItem>
             <Divider />
