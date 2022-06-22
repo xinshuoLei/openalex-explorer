@@ -80,7 +80,7 @@ export const ConceptInfoPage = () => {
             </ Box>
         ) 
         : 
-        (<Typography>Loading</Typography>)
+        (<Typography mx="auto" fontFamily="monospace">Loading</Typography>)
          }
          </Box>
         </ Box>

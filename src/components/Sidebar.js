@@ -12,6 +12,7 @@ import logo from '../images/OpenAlex-logo.png'
 import lightbulb from '../images/lightbulb.png'
 import paper from '../images/paper.png'
 import { useNavigate } from 'react-router-dom';
+import coding from '../images/coding.png'
 
 const drawerWidth = "16vw";
 
@@ -23,6 +24,9 @@ export const Sidebar = () => {
     const toConceptPage = () => {
         navigate("/concept")
     }
+    const toAdminPage = () => {
+      navigate("/admin")
+  }
 
     return (
         <Drawer
@@ -54,6 +58,13 @@ export const Sidebar = () => {
               <ListItemButton onClick={toConceptPage}>
                 <Image src={lightbulb} fit="contain" height="15%" width="15%" sx={{ mr:3, ml:3}} duration={0}/>
                 <Typography variant="h7" component="div" sx={{ mr:3, ml:4}} fontFamily="monospace">Concept</Typography>
+              </ListItemButton>
+            </ListItem>
+            <Divider />
+            <ListItem key="Admin" disablePadding>
+              <ListItemButton onClick={toAdminPage}>
+                <Image src={coding} fit="contain" height="15%" width="15%" sx={{ mr:3, ml:3}} duration={0}/>
+                <Typography variant="h7" component="div" sx={{ mr:3, ml:4}} fontFamily="monospace">Run Script</Typography>
               </ListItemButton>
             </ListItem>
             <Divider />
